@@ -50,21 +50,37 @@ const workdayDiff = (date, days) => {
     return countDay;
 }
 
-holiday().then((result) => {
-    this.holidayList = result;
+const getWorkDay = async (source) => {
+    this.holidayList = await holiday();
+
     let date = moment('2019-12-31');
+
     if (date.isValid()) {
-        console.log('isWorkday : ' + isWorkday(date));
-        console.log('isHoliday : ' + isHoliday(date));
-        console.log('workDayOfYear : ' + workDayOfYear(date));
-        console.log('workWeekOfYear : ' + workWeekOfYear(date));
-        console.log('workDayOfMonth : ' + workDayOfMonth(date));
-        console.log('workDayOfWeek : ' + workDayOfWeek(date));
+        let workDay = isWorkday(date);
+        let isHoliday = isHoliday(date);
+        let workDayOfYear = workDayOfYear(date);
+        let workWeekOfYear = workWeekOfYear(date);
+        let workDayOfMonth = workDayOfMonth(date);
+        let workDayOfWeek = workDayOfWeek(date);
+        return `${workDay}/${isHoliday}/${workDayOfYear}/${workWeekOfYear}/${workDayOfMonth}/${workDayOfWeek}/`;
     } else {
-        console.log(date)
+        return null;
     }
-})
+}
 
+module.exports = getWorkDay;
 
-
-
+// holiday().then((result) => {
+//     this.holidayList = result;
+//     let date = moment('2019-12-31');
+//     if (date.isValid()) {
+//         console.log('isWorkday : ' + isWorkday(date));
+//         console.log('isHoliday : ' + isHoliday(date));
+//         console.log('workDayOfYear : ' + workDayOfYear(date));
+//         console.log('workWeekOfYear : ' + workWeekOfYear(date));
+//         console.log('workDayOfMonth : ' + workDayOfMonth(date));
+//         console.log('workDayOfWeek : ' + workDayOfWeek(date));
+//     } else {
+//         console.log(date)
+//     }
+// })
