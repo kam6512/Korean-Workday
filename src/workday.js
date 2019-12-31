@@ -53,7 +53,7 @@ const workdayDiff = (date, days) => {
 const getWorkDay = async (source) => {
     this.holidayList = await holiday();
 
-    let date = moment('2019-12-31');
+    let date = moment(source);
 
     if (date.isValid()) {
         let workDay = isWorkday(date);
@@ -68,8 +68,8 @@ const getWorkDay = async (source) => {
     }
 }
 
-module.exports = getWorkDay;
 
+module.exports.get = getWorkDay;
 // holiday().then((result) => {
 //     this.holidayList = result;
 //     let date = moment('2019-12-31');
