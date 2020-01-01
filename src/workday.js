@@ -68,19 +68,4 @@ const getWorkDay = async (source) => {
     }
 }
 
-
 module.exports.get = getWorkDay;
-// holiday().then((result) => {
-//     this.holidayList = result;
-//     let date = moment('2019-12-31');
-//     if (date.isValid()) {
-//         console.log('isWorkday : ' + isWorkday(date));
-//         console.log('isHoliday : ' + isHoliday(date));
-//         console.log('workDayOfYear : ' + workDayOfYear(date));
-//         console.log('workWeekOfYear : ' + workWeekOfYear(date));
-//         console.log('workDayOfMonth : ' + workDayOfMonth(date));
-//         console.log('workDayOfWeek : ' + workDayOfWeek(date));
-//     } else {
-//         console.log(date)
-//     }
-// })
