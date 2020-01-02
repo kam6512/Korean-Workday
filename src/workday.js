@@ -52,19 +52,19 @@ const workdayDiff = (date, days) => {
 
 const getWorkDay = async (source) => {
     this.holidayList = await holiday();
-
-    let date = moment(source);
-
+    let date = moment(source).startOf('day');
     if (date.isValid()) {
-        let workDay = isWorkday(date);
-        let isHoliday = isHoliday(date);
-        let workDayOfYear = workDayOfYear(date);
-        let workWeekOfYear = workWeekOfYear(date);
-        let workDayOfMonth = workDayOfMonth(date);
-        let workDayOfWeek = workDayOfWeek(date);
-        return `${workDay}/${isHoliday}/${workDayOfYear}/${workWeekOfYear}/${workDayOfMonth}/${workDayOfWeek}/`;
+        return {
+            date : date.format('YYYYMMDD'),
+            isWorkday: isWorkday(date),
+            isHoliday: isHoliday(date),
+            workDayOfYear: workDayOfYear(date),
+            workWeekOfYear: workWeekOfYear(date),
+            workDayOfMonth: workDayOfMonth(date),
+            workDayOfWeek: workDayOfWeek(date)
+        }
     } else {
-        return null;
+        return {};
     }
 }
 
