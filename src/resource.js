@@ -9,8 +9,8 @@ const resourceDir = (() => {
     let resourcePath
     if (process.env.NODE_ENV === 'development') {
         resourcePath = path.join(__dirname, '../res/');
-    } else {
-        resourcePath = path.join(__dirname, '');
+    } else { //production
+        resourcePath = path.join('', './res/');
     }
     return resourcePath = path.normalize(resourcePath);
 })();
@@ -27,7 +27,7 @@ const readJsonData = async (fileName) => {
         data = await fsp.readFile(filePath, 'utf-8');
         return JSON.parse(data);
     } else return Promise.resolve([]);
-    
+
 }
 
 

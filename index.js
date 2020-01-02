@@ -1,7 +1,9 @@
 'use strict';
 
-const workday = require('./workday');
-const moment = require('./moment');
+const workday = require('./src/workday');
+const moment = require('./src/moment');
+const fs = require('fs');
+const path = require('path');
 
 let date
 if (process.argv[2] && typeof process.argv[2] === 'string') {
@@ -9,7 +11,8 @@ if (process.argv[2] && typeof process.argv[2] === 'string') {
 } else {
     date = moment();
 }
+
 workday.get(date).then((res) => {
-    console.log(res);
+    console.info(res);
 })
 
