@@ -1,9 +1,8 @@
 'use strict';
 
+const clipboardy = require('clipboardy');
 const workday = require('./src/workday');
 const moment = require('./src/moment');
-const fs = require('fs');
-const path = require('path');
 
 let date
 if (process.argv[2] && typeof process.argv[2] === 'string') {
@@ -14,5 +13,5 @@ if (process.argv[2] && typeof process.argv[2] === 'string') {
 
 workday.get(date).then((res) => {
     console.info(res);
+    clipboardy.writeSync(JSON.stringify(res));
 })
-

@@ -4,14 +4,15 @@
   "description": "calculate Korean Workday",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node src/index.js",
-    "start": "cross-env NODE_ENV=production node src/index.js ",
+    "dev": "cross-env NODE_ENV=development node index.js",
+    "start": "cross-env NODE_ENV=production node index.js ",
     "build": "cross-env NODE_ENV=production pkg . -t node12-win-x64 --out-path dist "
   },
   "author": "ywkang@rbrain.co.kr",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.0",
+    "clipboardy": "^2.1.0",
     "cross-env": "^6.0.3",
     "lodash": "^4.17.15",
     "moment": "^2.24.0"
