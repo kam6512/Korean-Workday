@@ -54,17 +54,26 @@ const getWorkDay = async (source) => {
     this.holidayList = await holiday();
     let date = moment(source).startOf('day');
     if (date.isValid()) {
-        return {
-            date : date.format('YYYYMMDD'),
+        let full = {
+            date: date.format('YYYYMMDD'),
             isWorkday: isWorkday(date),
             isHoliday: isHoliday(date),
             workDayOfYear: workDayOfYear(date),
             workWeekOfYear: workWeekOfYear(date),
             workDayOfMonth: workDayOfMonth(date),
             workDayOfWeek: workDayOfWeek(date)
+        };
+        return {
+            status: "success",
+            full,
+            onlyValue: `${full.date},${full.isWorkday},${full.isHoliday},${full.workDayOfYear},${full.workWeekOfYear},${full.workDayOfMonth},${full.workDayOfWeek}`
         }
     } else {
-        return {};
+        return {
+            status: "fail",
+            full: {},
+            onlyValue: ""
+        };
     }
 }
 
