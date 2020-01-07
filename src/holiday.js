@@ -13,10 +13,13 @@ const filteredEventKeyword = '림픽'
 
 
 // Google 공휴일 캘린더 REST API 정보
-const GoogleCalendar = (year = moment().get('year')) => {
-    // let holidayLink = 'https://clients6.google.com/calendar/v3/calendars/ko.south_korea%23holiday@group.v.calendar.google.com/events?calendarId=ko.south_korea%23holiday%40group.v.calendar.google.com&singleEvents=true&timeZone=Asia%2FSeoul&maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=2018-01-01T00%3A00%3A00%2B09%3A00&timeMax=2020-12-31T00%3A00%3A00%2B09%3A00&key=AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs'
+const GoogleCalendar = async (year = moment().get('year')) => {
     let link = 'https://clients6.google.com/calendar/v3/calendars/ko.south_korea%23holiday@group.v.calendar.google.com/events?calendarId=ko.south_korea%23holiday%40group.v.calendar.google.com&singleEvents=true&timeZone=Asia%2FSeoul&maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=$START$-01-01T00%3A00%3A00%2B09%3A00&timeMax=$END$-01-01T00%3A00%3A00%2B09%3A00&key=$KEY$';
-    let key = 'AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs';
+    // let key = 'AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs';
+    let key;
+    await res.readJsonData('calendarKey.json').then((data) => {
+        key = data.key
+    });
     return link
         .replace('$START$', year - 2)
         .replace('$END$', year + 3)
@@ -26,7 +29,7 @@ const GoogleCalendar = (year = moment().get('year')) => {
 // Google 공휴일 캘린더 조회
 const restGoogleEvent = async () => {
     try {
-        let result = await axios.get(GoogleCalendar())
+        let result = await axios.get(await GoogleCalendar())
         return result.data.items
     } catch (error) {
         console.error(error)
@@ -62,7 +65,7 @@ const getHolidayList = async () => {
 };
 
 const fetchHolidayList = async () => {
-    let holidayList 
+    let holidayList
     const holidayFile = 'holiday.json';
     if (await res.isJsonFileExist(holidayFile)) {
         holidayList = await res.readJsonData(holidayFile);

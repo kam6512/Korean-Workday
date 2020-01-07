@@ -7,10 +7,10 @@ const fsp = fs.promises;
 
 const resourceDir = (() => {
     let resourcePath
-    if (process.env.NODE_ENV === 'development') {
-        resourcePath = path.join(__dirname, '../res/');
-    } else { //production
+    if (process.env.NODE_ENV === 'production') {
         resourcePath = path.join('', './res/');
+    } else { //developer
+        resourcePath = path.join(__dirname, '../res/');
     }
     return resourcePath = path.normalize(resourcePath);
 })();
@@ -26,8 +26,9 @@ const readJsonData = async (fileName) => {
     if (await isJsonFileExist(fileName)) {
         data = await fsp.readFile(filePath, 'utf-8');
         return JSON.parse(data);
-    } else return Promise.resolve([]);
-
+    } else {
+        return Promise.resolve([]);
+    }
 }
 
 
