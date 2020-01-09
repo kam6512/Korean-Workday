@@ -1,12 +1,18 @@
 
 'use strict';
 
-const isProduction = () => {
-    return process.env.NODE_ENV === 'production';
-}
+const isProduction = (() => {
+    if (process.env.NODE_ENV) {
+        return process.env.NODE_ENV === 'production';
+    }
+    return false;
+})();
 
-const isDevlopment = () => {
-    return process.env.NODE_ENV === 'development';
-}
+const isDevlopment = (() => {
+    if (process.env.NODE_ENV) {
+        return process.env.NODE_ENV === 'development';
+    }
+    return true;
+})();
 
 module.exports = { isProduction, isDevlopment }

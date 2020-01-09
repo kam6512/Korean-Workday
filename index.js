@@ -1,8 +1,10 @@
 'use strict';
+global.appRootPath = __dirname;
 
 const clipboardy = require('clipboardy');
-const workday = require('./src/workday');
-const moment = require('./src/moment');
+const workday = require('./src/workday.js');
+const moment = require('./src/core/moment.js');
+
 
 let date
 if (process.argv[2] && typeof process.argv[2] === 'string') {

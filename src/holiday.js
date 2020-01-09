@@ -5,8 +5,8 @@ const path = require('path');
 // const fsp = fs.promises;
 const _ = require('lodash');
 const axios = require('axios');
-const moment = require('./moment');
-const res = require('./resource');
+const moment = require('./core/moment');
+const res = require('./core/resource');
 
 const filteredEventList = ['식목일', '어버이날', '스승의날', '제헌절', '국군의날', '크리스마스 이브', '섣달 그믐날']
 const filteredEventKeyword = '림픽'

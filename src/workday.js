@@ -1,7 +1,7 @@
 'use strict';
 
 const holiday = require('./holiday');
-const moment = require('./moment');
+const moment = require('./core/moment');
 
 const isWorkday = (date) => {
     date = moment(date);
