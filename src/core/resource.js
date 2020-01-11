@@ -36,17 +36,14 @@ const getFileAbsPath = (fileName) => {
 }
 
 const isJsonFileExist = async (fileName) => {
-    // let filePath = path.join(resourceDir, fileName);
     let filePath = getFileAbsPath(fileName);
     return fs.existsSync(filePath);
 }
 
 const readJsonData = async (fileName) => {
-    // let filePath = path.join(resourceDir, fileName);
     let filePath = getFileAbsPath(fileName);
-    let data
     if (await isJsonFileExist(fileName)) {
-        data = await fsp.readFile(filePath, 'utf-8');
+        let data = await fsp.readFile(filePath, 'utf-8');
         return JSON.parse(data);
     } else {
         return Promise.resolve([]);
@@ -56,7 +53,6 @@ const readJsonData = async (fileName) => {
 
 // JSON 파일로 캘린더 정보를 저장
 const writeJsonData = async (fileName, data) => {
-    // let filePath = path.join(resourceDir, fileName);
     let filePath = getFileAbsPath(fileName);
     await fsp.writeFile(filePath, JSON.stringify(data), 'utf8');
 }
