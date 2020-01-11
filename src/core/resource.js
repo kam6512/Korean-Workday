@@ -14,9 +14,8 @@ const rootDir = (() => {
             // developer
             root = path.join(__dirname, '../res/');
         }
-        root = path.normalize(root);
-    }
-    return root ? root : __dirname;
+    } else root += '/';
+    return root ? root = path.normalize(root) : __dirname;
 })();
 
 const resourceDir = (() => {
@@ -31,7 +30,6 @@ const getFileAbsPath = (fileName) => {
     } else {
         absPath = path.join(resourceDir, fileName);
     }
-    console.log(absPath);
     return path.normalize(absPath);
 }
 
