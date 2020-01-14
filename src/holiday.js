@@ -1,8 +1,6 @@
 'use strict';
 
 const path = require('path');
-// const fs = require('fs');
-// const fsp = fs.promises;
 const _ = require('lodash');
 const axios = require('axios');
 const moment = require('./core/moment');
@@ -15,7 +13,6 @@ const filteredEventKeyword = '림픽'
 // Google 공휴일 캘린더 REST API 정보
 const GoogleCalendar = async (year = moment().get('year')) => {
     let link = 'https://clients6.google.com/calendar/v3/calendars/ko.south_korea%23holiday@group.v.calendar.google.com/events?calendarId=ko.south_korea%23holiday%40group.v.calendar.google.com&singleEvents=true&timeZone=Asia%2FSeoul&maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=$START$-01-01T00%3A00%3A00%2B09%3A00&timeMax=$END$-01-01T00%3A00%3A00%2B09%3A00&key=$KEY$';
-    // let key = 'AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs';
     let key;
     await res.readJsonData('calendarKey.json').then((data) => {
         key = data.key
