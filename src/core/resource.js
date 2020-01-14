@@ -25,6 +25,7 @@ const resourceDir = (() => {
 
 const getFileAbsPath = (fileName) => {
     let absPath
+    console.log(fileName)
     if (path.isAbsolute(fileName)) {
         absPath = fileName;
     } else {
@@ -55,6 +56,22 @@ const writeJsonData = async (fileName, data) => {
     await fsp.writeFile(filePath, JSON.stringify(data), 'utf8');
 }
 
+const getGCalendarKey = async () => {
+    let keyPath = rootDir + 'calendarKey.json'
+    // let keyPath = 'G:\\Dev\\WORKSPACE\\Korean-Workday\\' + 'calendarKey.json'
+    if (await isJsonFileExist(keyPath)) {
+        let data = await fsp.readFile(keyPath, 'utf-8');
+        console.log(data);
+        return JSON.parse(data);
+    } else {
+        return Promise.resolve([]);
+    }
+}
+
 module.exports = {
     isJsonFileExist, readJsonData, writeJsonData
 }
+
+getGCalendarKey().then((data) => {
+    console.log(data);
+})
