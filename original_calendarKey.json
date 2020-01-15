@@ -1,3 +1,6 @@
 {
-    "key": ""
+    "key": "",
+    "extend_holiday": {
+        "test" : "20190102"
+    }
 }
