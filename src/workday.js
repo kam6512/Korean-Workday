@@ -25,6 +25,11 @@ const workWeekOfYear = (date) => {
     }
     return weekOfYear;
 }
+const workWeekOfYearISO = (date) => {
+    date = moment(date);
+    let weekOfYear = date.week();
+    return weekOfYear;
+}
 
 const workDayOfYear = (date) => {
     date = moment(date);
