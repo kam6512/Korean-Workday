@@ -9,7 +9,7 @@ const rootDir = (() => {
     let root = global['appRootPath'];
     if (!root) {
         if (ctx.isProduction) {
-            root = path.join('', './res/');
+            root = path.join('', '/');
         } else {
             // developer
             root = path.join(__dirname, '../res/');
@@ -25,7 +25,6 @@ const resourceDir = (() => {
 
 const getFileAbsPath = (fileName) => {
     let absPath
-    console.log(fileName)
     if (path.isAbsolute(fileName)) {
         absPath = fileName;
     } else {
@@ -57,11 +56,9 @@ const writeJsonData = async (fileName, data) => {
 }
 
 const getGCalendarKey = async () => {
-    let keyPath = rootDir + 'calendarKey.json'
-    // let keyPath = 'G:\\Dev\\WORKSPACE\\Korean-Workday\\' + 'calendarKey.json'
+    let keyPath = rootDir + 'original_calendarKey.json'
     if (await isJsonFileExist(keyPath)) {
         let data = await fsp.readFile(keyPath, 'utf-8');
-        console.log(data);
         return JSON.parse(data);
     } else {
         return Promise.resolve([]);
@@ -69,9 +66,5 @@ const getGCalendarKey = async () => {
 }
 
 module.exports = {
-    isJsonFileExist, readJsonData, writeJsonData
+    isJsonFileExist, readJsonData, writeJsonData, getGCalendarKey
 }
-
-getGCalendarKey().then((data) => {
-    console.log(data);
-})

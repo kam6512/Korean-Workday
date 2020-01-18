@@ -15,7 +15,7 @@ const link = 'https://clients6.google.com/calendar/v3/calendars/ko.south_korea%2
 // Google 공휴일 캘린더 REST API 정보
 const GoogleCalendar = async (year = moment().get('year')) => {
     let key;
-    await res.readJsonData('calendarKey.json').then((data) => {
+    await res.getGCalendarKey().then((data) => {
         key = data.key
     });
     return link
@@ -30,7 +30,7 @@ const restGoogleEvent = async () => {
         let result = await axios.get(await GoogleCalendar())
         return result.data.items
     } catch (error) {
-        console.error(error)
+        // console.error(error)
         return []
     }
 }
