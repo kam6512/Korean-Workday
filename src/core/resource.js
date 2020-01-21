@@ -61,8 +61,14 @@ const getGCalendarKey = async () => {
         let data = await fsp.readFile(keyPath, 'utf-8');
         return JSON.parse(data);
     } else {
+        await createKeyFile();
         return Promise.resolve([]);
     }
+}
+
+const createKeyFile = async (keyFile) => {
+    //create keyFile in root
+
 }
 
 module.exports = {
