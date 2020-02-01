@@ -11,7 +11,6 @@ const rootDir = (() => {
         if (ctx.isProduction) {
             root = path.join('', '/');
         } else {
-            // developer
             root = path.join(__dirname, '../res/');
         }
     } else root += '/';
@@ -48,8 +47,6 @@ const readJsonData = async (fileName) => {
     }
 }
 
-
-// JSON 파일로 캘린더 정보를 저장
 const writeJsonData = async (fileName, data) => {
     let filePath = getFileAbsPath(fileName);
     await fsp.writeFile(filePath, JSON.stringify(data), 'utf8');
