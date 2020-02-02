@@ -54,7 +54,7 @@ const writeJsonData = async (fileName, data) => {
 
 const getGCalendarKey = async () => {
     let keyPath = './calendarKey.json';
-    if (await isJsonFileExist(keyPath)) {
+    if (fs.existsSync(keyPath)) {
         let data = await fsp.readFile(keyPath, 'utf-8');
         console.log(data)
         return JSON.parse(data);
