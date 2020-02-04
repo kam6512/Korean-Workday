@@ -61,15 +61,16 @@ const getGCalendarKey = async () => {
     let keyPath = './calendarKey.json';
     if (!fs.existsSync(keyPath)) await createKeyFile(keyPath);
     let data = await fsp.readFile(keyPath, 'utf-8');
-    console.log(data)
+    console.log("getGCalendarKey");
+    console.log(data);
     return JSON.parse(data);
 }
 
 const createKeyFile = async keyPath => {
-    //create keyFile in root
-    let defKeyFile = getFileAbsPath('keyFile.json');
-    await pipeline(fs.createReadStream(defKeyFile)
-        .pipe(fs.createWriteStream(rootDir + keyPath)));
+    let sourceKeyFile = getFileAbsPath('keyFile.json');
+    let destKeyFile = rootDir + keyPath;
+    await pipeline(fs.createReadStream(sourceKeyFile)
+        .pipe(fs.createWriteStream(destKeyFile)));
 }
 
 module.exports = {
