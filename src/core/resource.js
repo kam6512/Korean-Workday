@@ -5,10 +5,12 @@ const path = require('path');
 
 const fs = require('fs');
 const fsp = fs.promises;
+const extra = require('fs-extra');
 
 const util = require('util');
 const stream = require('stream');
 const pipeline = util.promisify(stream.pipeline);
+
 
 const rootDir = (() => {
     let root = global['appRootPath'];
@@ -61,16 +63,13 @@ const getGCalendarKey = async () => {
     let keyPath = './calendarKey.json';
     if (!fs.existsSync(keyPath)) await createKeyFile(keyPath);
     let data = await fsp.readFile(keyPath, 'utf-8');
-    console.log("getGCalendarKey");
-    console.log(data);
     return JSON.parse(data);
 }
 
-const createKeyFile = async keyPath => {
+const createKeyFile = (keyPath) => {
     let sourceKeyFile = getFileAbsPath('keyFile.json');
     let destKeyFile = rootDir + keyPath;
-    await pipeline(fs.createReadStream(sourceKeyFile)
-        .pipe(fs.createWriteStream(destKeyFile)));
+    extra.copyFileSync(sourceKeyFile, destKeyFile);
 }
 
 module.exports = {
