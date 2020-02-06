@@ -7,11 +7,6 @@ const fs = require('fs');
 const fsp = fs.promises;
 const extra = require('fs-extra');
 
-const util = require('util');
-const stream = require('stream');
-const pipeline = util.promisify(stream.pipeline);
-
-
 const rootDir = (() => {
     let root = global['appRootPath'];
     if (!root) {
