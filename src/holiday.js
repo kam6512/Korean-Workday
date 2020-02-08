@@ -30,7 +30,6 @@ const restGoogleEvent = async () => {
         let result = await axios.get(await GoogleCalendar())
         return result.data.items
     } catch (error) {
-        // console.error(error)
         return []
     }
 }
