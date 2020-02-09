@@ -8,7 +8,7 @@
     "start": "cross-env NODE_ENV=production node index.js ",
     "build": "cross-env NODE_ENV=production pkg . -t node12-win-x64 --out-path dist "
   },
-  "author": "ywkang@rbrain.co.kr",
+  "author": "ywkang@rbrain.co.kr;kam6512@gmail.com",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.0",

@@ -1,7 +1,7 @@
 'use strict';
 
 const moment = require('moment');
-moment.locale('kr')
+moment.locale('kr');
 
 const invalidErrorMessage = '전달받은 DATETIME 값이 유효하지 않습니다.';
 
