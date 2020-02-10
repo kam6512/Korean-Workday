@@ -67,6 +67,7 @@ const fetchHolidayList = async () => {
     if (await res.isJsonFileExist(holidayFile)) {
         holidayList = await res.readJsonData(holidayFile);
     } else {
+        // 파일 없을 시, Google Key 세팅 오류 발생 필요
         holidayList = await getHolidayList();
         await res.writeJsonData(holidayFile, holidayList);
     }
