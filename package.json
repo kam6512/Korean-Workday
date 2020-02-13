@@ -1,5 +1,5 @@
 {
-  "name": "KOREAN_WORKDAY",
+  "name": "korean_workday",
   "version": "1.0.0",
   "description": "calculate Korean Workday",
   "main": "index.js",
