@@ -46,17 +46,14 @@ const getHolidayListFromGoogle = async () => {
         return !(filteredEventList.includes(eventName) || eventName.includes(filteredEventKeyword))
     });
 
-    const googleCalendar = 'google.json';
-    await res.writeJsonData(googleCalendar, holidayList);
+    await res.writeJsonData('google.json', holidayList);
     return holidayList;
 };
 
 const getHolidayList = async () => {
     let googleHolidayList = await getHolidayListFromGoogle();
     let defaultHolidayList = [];
-
-    const defCalendar = 'default.json';
-    defaultHolidayList = await res.readJsonData(defCalendar);
+    defaultHolidayList = await res.readJsonData('default.json');
     let holidayList = defaultHolidayList.concat(googleHolidayList);
     return _.uniqBy(holidayList, 'eventDate');
 };
