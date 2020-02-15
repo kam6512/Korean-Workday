@@ -9,8 +9,6 @@ const filteredEventList = ['식목일', '어버이날', '스승의날', '제헌�
 const filteredEventKeyword = '림픽'
 
 
-const link = 'https://clients6.google.com/calendar/v3/calendars/ko.south_korea%23holiday@group.v.calendar.google.com/events?calendarId=ko.south_korea%23holiday%40group.v.calendar.google.com&singleEvents=true&timeZone=Asia%2FSeoul&maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=$START$-01-01T00%3A00%3A00%2B09%3A00&timeMax=$END$-01-01T00%3A00%3A00%2B09%3A00&key=$KEY$';
-
 
 // Google 공휴일 캘린더 REST API 정보
 const GoogleCalendar = async (year = moment().get('year')) => {
@@ -18,10 +16,10 @@ const GoogleCalendar = async (year = moment().get('year')) => {
     await res.getGCalendarKey().then((data) => {
         key = data.key
     });
-    return link
-        .replace('$START$', year - 2)
-        .replace('$END$', year + 3)
-        .replace('$KEY$', key)
+    return `https://clients6.google.com/calendar/v3/calendars/
+    ko.south_korea%23holiday@group.v.calendar.google.com/
+    events?calendarId=ko.south_korea%23holiday%40group.v.calendar.google.com&FsingleEvents=true&timeZone=Asia%2FSeoul
+    &maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=${year - 2}-01-01T00%3A00%3A00%2B09%3A00&timeMax=${year + 3}-01-01T00%3A00%3A00%2B09%3A00&key=${key}`;
 }
 
 // Google 공휴일 캘린더 조회
