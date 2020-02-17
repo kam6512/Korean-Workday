@@ -11,7 +11,7 @@ const rootDir = (() => {
     let root = global['appRootPath'];
     if (!root) {
         if (ctx.isProduction) {
-            root = path.join('', '/');
+            root = '/';
         } else {
             root = path.join(__dirname, '../res/');
         }
@@ -55,7 +55,7 @@ const writeJsonData = async (fileName, data) => {
 }
 
 const getGCalendarKey = async () => {
-    let keyPath = path.normalize('./calendarKey.json');
+    let keyPath = path.normalize('calendarKey.json');
     if (!fs.existsSync(keyPath)) createKeyFile(keyPath);
     let data = await fsp.readFile(keyPath, 'utf-8');
     return JSON.parse(data);
