@@ -18,3 +18,7 @@ const createKeyFile = (keyPath) => {
     let destKeyFile = rootDir + keyPath;
     extra.copyFileSync(sourceKeyFile, destKeyFile);
 }
+
+module.exports = {
+     getGCalendarKey, createKeyFile
+}
