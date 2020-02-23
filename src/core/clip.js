@@ -12,5 +12,5 @@ const readFromClip = (source) => {
 }
 
 module.exports = {
-    writeToClip
+    writeToClip, readFromClip
 }
