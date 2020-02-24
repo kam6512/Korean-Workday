@@ -1,22 +1,10 @@
 'use strict';
 
-const ctx = require('./context');
+const { rootDir } = require('../core/context');
 const path = require('path');
 
 const fs = require('fs');
 const fsp = fs.promises;
-
-const rootDir = (() => {
-    let root = global['appRootPath'];
-    if (!root) {
-        if (ctx.isProduction) {
-            root = '/';
-        } else {
-            root = path.join(__dirname, '../res/');
-        }
-    } else root += '/';
-    return root ? root = path.normalize(root) : __dirname;
-})();
 
 const resourceDir = (() => {
     let resourcePath = path.join(rootDir, './res/');

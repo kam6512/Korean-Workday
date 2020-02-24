@@ -1,10 +1,11 @@
 "use strict"
 
 const path = require('path');
-
 const fs = require('fs');
 const fsp = fs.promises;
 const extra = require('fs-extra');
+
+const { rootDir } = require('../core/context')
 
 const getGCalendarKey = async () => {
     let keyPath = path.normalize('calendarKey.json');
@@ -20,5 +21,5 @@ const createKeyFile = (keyPath) => {
 }
 
 module.exports = {
-     getGCalendarKey, createKeyFile
+    getGCalendarKey, createKeyFile
 }
