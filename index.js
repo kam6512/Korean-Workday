@@ -2,7 +2,7 @@
 
 global.appRootPath = __dirname;
 
-const clipboardy = require('clipboardy');
+const clip = require('./src/core/clip');
 const workday = require('./src/workday.js');
 const moment = require('./src/core/moment.js');
 
@@ -15,5 +15,5 @@ if (process.argv[2] && typeof process.argv[2] === 'string') {
 
 workday.get(date).then((res) => {
     console.info(res);
-    clipboardy.writeSync(JSON.stringify(res));
+    clip.writeSync(JSON.stringify(res));
 })
