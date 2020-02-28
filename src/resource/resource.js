@@ -38,7 +38,7 @@ const readJsonData = async (fileName) => {
 
 const writeJsonData = async (fileName, data) => {
     let filePath = getFileAbsPath(fileName);
-    await fsp.writeFile(filePath, JSON.stringify(data), 'utf8');
+    await fsp.writeFile(filePath, JSON.stringify(data), 'utf-8');
 }
 
 module.exports = {
