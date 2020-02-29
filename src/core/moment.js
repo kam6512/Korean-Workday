@@ -3,7 +3,7 @@
 const moment = require('moment');
 moment.locale('kr');
 
-const invalidErrorMessage = '전달받은 DATETIME 값이 유효하지 않습니다.';
+const invalidErrorMessage = '입력받은 DATETIME 값이 유효하지 않습니다.';
 
 const createMoment = (date) => {
     if (date === undefined) {
