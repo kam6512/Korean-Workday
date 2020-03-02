@@ -9,7 +9,7 @@ const { rootDir } = require('../core/context')
 
 
 const isKeyExist = () =>{
-    let keyPath = path.normalize('calendarKey.json');
+    let keyPath = path.normalize('key.json');
     return fs.existsSync(keyPath);
 }
 
@@ -20,7 +20,7 @@ const getGCalendarKey = async () => {
 }
 
 const createKeyFile = (keyPath) => {
-    let sourceKeyFile = getFileAbsPath('keyFile.json');
+    let sourceKeyFile = getFileAbsPath('key.json');
     let destKeyFile = rootDir + keyPath;
     extra.copyFileSync(sourceKeyFile, destKeyFile);
 }
