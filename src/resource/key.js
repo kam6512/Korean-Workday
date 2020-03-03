@@ -8,13 +8,9 @@ const extra = require('fs-extra');
 const { rootDir } = require('../core/context')
 
 
-const isKeyExist = () =>{
-    let keyPath = path.normalize('key.json');
-    return fs.existsSync(keyPath);
-}
-
 const getGCalendarKey = async () => {
-    if (!isKeyExist()) createKeyFile(keyPath);
+    let keyPath = path.normalize('key.json');
+    if (!fs.existsSync(keyPath)) createKeyFile(keyPath);
     let data = await fsp.readFile(keyPath, 'utf-8');
     return JSON.parse(data);
 }
