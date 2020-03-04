@@ -7,6 +7,7 @@ const extra = require('fs-extra');
 
 const { rootDir } = require('../core/context')
 
+const keyName = 'key.json';
 
 const getGCalendarKey = async () => {
     let keyPath = path.normalize('key.json');
