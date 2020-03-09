@@ -9,20 +9,24 @@ const { getFileAbsPath } = require('../core/resource')
 const { rootDir } = require('../core/context')
 
 const keyName = 'key.json';
+const keyPath = path.normalize(keyName);
 
 const getGCalendarKey = async () => {
-    let keyPath = path.normalize(keyName);
-    if (!fs.existsSync(keyPath)) createKeyFile(keyPath);
+    if (!isKeyFileExist()) createKeyFile(keyPath);
     let data = await fsp.readFile(keyPath, 'utf-8');
     return JSON.parse(data);
 }
 
-const createKeyFile = (keyPath) => {
+const createKeyFile = () => {
     let sourceKeyFile = getFileAbsPath(keyName);
     let destKeyFile = rootDir + keyPath;
     extra.copyFileSync(sourceKeyFile, destKeyFile);
 }
 
+const isKeyFileExist = () => {
+    return fs.existsSync(keyPath);
+}
+
 module.exports = {
-    getGCalendarKey, createKeyFile
+    getGCalendarKey, createKeyFile, isKeyFileExist
 }
