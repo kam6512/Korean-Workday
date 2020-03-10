@@ -13,14 +13,14 @@ const filteredEventKeyword = '림픽'
 
 // Google 공휴일 캘린더 REST API 정보
 const GoogleCalendar = async (year = moment().get('year')) => {
-    let key;
-    await res.getGCalendarKey().then((data) => {
-        key = data.key
+    let googleKey;
+    await key.getGCalendarKey().then((data) => {
+        googleKey = data.key
     });
     return `https://clients6.google.com/calendar/v3/calendars/
     ko.south_korea%23holiday@group.v.calendar.google.com/
     events?calendarId=ko.south_korea%23holiday%40group.v.calendar.google.com&FsingleEvents=true&timeZone=Asia%2FSeoul
-    &maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=${year - 2}-01-01T00%3A00%3A00%2B09%3A00&timeMax=${year + 3}-01-01T00%3A00%3A00%2B09%3A00&key=${key}`;
+    &maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=${year - 2}-01-01T00%3A00%3A00%2B09%3A00&timeMax=${year + 3}-01-01T00%3A00%3A00%2B09%3A00&key=${googleKey}`;
 }
 
 // Google 공휴일 캘린더 조회
