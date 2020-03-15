@@ -3,7 +3,7 @@
 const _ = require('lodash');
 const axios = require('axios');
 const popupS = require('popups');
-const moment = require('./core/moment');
+const moments = require('./core/moment');
 const res = require('./resource/resource');
 const key = require('./resource/key');
 
@@ -14,7 +14,7 @@ const filteredEventKeyword = '림픽'
 
 
 // Google 공휴일 캘린더 REST API 정보
-const GoogleCalendar = async (year = moment().get('year')) => {
+const GoogleCalendar = async (year = moments().get('year')) => {
     let googleKey;
     await key.getGCalendarKey().then((data) => {
         googleKey = data.key
