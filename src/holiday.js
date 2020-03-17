@@ -70,6 +70,7 @@ const fetchHolidayList = async () => {
             await res.writeJsonData(holidayFile, holidayList);    
         }else{
         // 파일 없을 시, Google Key 세팅 오류 발생 필요
+        key.createKeyFile();
         popupS.alert({
             content: 'plz add Google Calendar Key'
         });
