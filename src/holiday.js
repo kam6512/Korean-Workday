@@ -38,7 +38,7 @@ const restGoogleEvent = async () => {
 // Google 공휴일 캘린더 정보 > JSON Data 로 파싱
 const getHolidayListFromGoogle = async () => {
     let eventCalendar = await restGoogleEvent();
-    let holidayList = eventCalendar.map(function (event) {
+    let holidayList = eventCalendar.map((event) => {
         return {
             eventName: event['summary'],
             eventDate: event['start']['date'].replace(/-/gi, '')
@@ -65,16 +65,16 @@ const fetchHolidayList = async () => {
     if (await res.isJsonFileExist(holidayFile)) {
         holidayList = await res.readJsonData(holidayFile);
     } else {
-        if(key.isKeyFileExist()){
+        if (key.isKeyFileExist()) {
             holidayList = await getHolidayList();
-            await res.writeJsonData(holidayFile, holidayList);    
-        }else{
-        
-        key.createKeyFile();
-        // 파일 없을 시, Google Key 세팅 오류 발생 필요
-        popupS.alert({
-            content: '구글 캘린더 키를 등록해 주세요'
-        });
+            await res.writeJsonData(holidayFile, holidayList);
+        } else {
+
+            key.createKeyFile();
+            // 파일 없을 시, Google Key 세팅 오류 발생 필요
+            popupS.alert({
+                content: '구글 캘린더 키를 등록해 주세요'
+            });
         }
     }
     return holidayList;
