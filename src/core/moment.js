@@ -5,6 +5,8 @@ moment.locale('kr');
 
 const invalidErrorMessage = '입력받은 DATETIME 값이 유효하지 않습니다.';
 
+
+// moments 생성
 const createMoment = (date) => {
     if (date === undefined) {
         return moment();
