@@ -3,7 +3,7 @@
 const moment = require('moment');
 moment.locale('kr');
 
-const invalidErrorMessage = '입력받은 DATETIME 값이 유효하지 않습니다.';
+const invalidErrorMessage = '입력받은 날짜 매개변수 값이 유효하지 않습니다.';
 
 
 // moments 생성
