@@ -5,7 +5,7 @@ const fs = require('fs');
 const fsp = fs.promises;
 const extra = require('fs-extra');
 
-const { getFileAbsPath } = require('../core/resource')
+const { getFileAbsPath } = require('./resource')
 const { rootDir } = require('../core/context')
 
 const keyName = 'key.json';

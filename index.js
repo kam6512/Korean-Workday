@@ -15,5 +15,5 @@ if (process.argv[2] && typeof process.argv[2] === 'string') {
 
 workday.get(date).then((res) => {
     console.info(res);
-    clip.writeSync(JSON.stringify(res));
+    clip.writeToClip(JSON.stringify(res));
 })

@@ -2,7 +2,7 @@
 
 const _ = require('lodash');
 const axios = require('axios');
-const popupS = require('popups');
+const alert = require('alert-node');
 const moments = require('./core/moment');
 const res = require('./resource/resource');
 const key = require('./resource/key');
@@ -57,7 +57,7 @@ const getHolidayList = async () => {
 };
 
 const fetchHolidayList = async () => {
-    let holidayList
+    let holidayList = [];
     const holidayFile = 'holiday.json';
     if (await res.isJsonFileExist(holidayFile)) {
         holidayList = await res.readJsonData(holidayFile);
@@ -67,9 +67,7 @@ const fetchHolidayList = async () => {
             await res.writeJsonData(holidayFile, holidayList);
         } else {
             key.createKeyFile();
-            popupS.alert({
-                content: '구글 캘린더 키를 등록해 주세요'
-            });
+            alert('캘린더 조회','구글 캘린더 키를 등록해 주세요');
         }
     }
     return holidayList;

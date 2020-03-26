@@ -42,5 +42,5 @@ const writeJsonData = async (fileName, data) => {
 }
 
 module.exports = {
-    isJsonFileExist, readJsonData, writeJsonData,
+    isJsonFileExist, readJsonData, writeJsonData, getFileAbsPath
 }
