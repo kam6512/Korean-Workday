@@ -16,7 +16,7 @@
     "clipboardy": "^2.1.0",
     "cross-env": "^6.0.3",
     "fs-extra": "^8.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0"
   },
   "devDependencies": {
